@@ -1,4 +1,8 @@
 export type Response<T = any> = {
-  message: string;
+  meta: {
+    message: string;
+    code: number;
+    status: string;
+  };
   data: T;
 };
