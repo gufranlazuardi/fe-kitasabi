@@ -8,8 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -26,12 +24,7 @@ const Navbar = () => {
         />
       </Link>
 
-      <div className="flex gap-6 items-center">
-        {/* Display the appropriate icon based on the current theme */}
-
-        <Link href="/auth/register">
-          <Button variant={"outline"}>Register</Button>
-        </Link>
+      <div className="flex gap-2 items-center">
 
         <Link href="/auth/login">
           <Button className="bg-sky-400">Login</Button>

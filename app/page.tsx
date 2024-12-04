@@ -19,7 +19,7 @@ const Home = () => {
           className="object-cover rounded-2xl shadow-xl"
         />
         <div className='mt-8 absolute text-right bottom-10 right-10'>
-          <Button className='bg-sky-400 py-2' size={'lg'}>
+          <Button className='bg-sky-400 py-6' size={'lg'}>
             <h1 className='text-lg font-bold text-white'>Lets Fund!</h1>
           </Button>
         </div>
