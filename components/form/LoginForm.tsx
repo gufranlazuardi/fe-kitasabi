@@ -11,6 +11,8 @@ import { Form } from '../ui/form';
 import { CustomFormField } from '../CustomForm';
 import { Input } from '../ui/input';
 import { useToast } from '@/hooks/use-toast';
+import { Button } from '../ui/button';
+import { Loader2 } from 'lucide-react';
 
 const LoginForm = () => {
     const {toast} = useToast()
@@ -43,7 +45,10 @@ const LoginForm = () => {
   return (
     <div>
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmitLogin)}>
+            <form
+                onSubmit={form.handleSubmit(onSubmitLogin)}
+                className="flex flex-col w-full mx-auto gap-4 text-start"
+                >
                 <CustomFormField control={form.control} name="email" label="Email">
                     {(field) => (
                         <Input
@@ -66,6 +71,23 @@ const LoginForm = () => {
                         />
                     )}
                 </CustomFormField>
+                <Button
+                    type='submit'
+                    className='hover:bg-[#1b609c] bg-sky-400 mt-4'
+                    disabled={form.formState.isSubmitting}
+                    aria-disabled={form.formState.isSubmitting}
+                >
+                    {form.formState.isSubmitting ?  (
+                        <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            <p>Please wait</p>
+                        </>
+                    ) : (
+                        <div className='flex cursor-pointer'>
+                            <p className="font-medium tracking-wide text-white">Login</p>
+                        </div>
+                    )}
+                </Button>
             </form>
         </Form>
     </div>
