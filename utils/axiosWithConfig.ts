@@ -1,17 +1,10 @@
 import axios from "axios";
 
-let bearerToken = "";
-const axiosWithConfig = axios.create();
-
-export const setAxiosConfig = (token: string) => {
-  bearerToken = token;
-};
-
-axiosWithConfig.interceptors.request.use((axiosConfig) => {
-  axiosConfig.headers.Authorization = `Bearer ${bearerToken}`;
-  axiosConfig.baseURL = process.env.NEXT_PUBLIC_URL
-
-  return axiosConfig;
+const axiosWithConfig = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL, // Ensure environment variable is configured
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export default axiosWithConfig;

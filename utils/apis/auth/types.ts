@@ -29,11 +29,7 @@ export type LoginSchema = z.infer<typeof loginSchema>;
 export type RegisterSchema = z.infer<typeof registerSchema>;
 
 export type LoginResponse = {
-  meta: {
-    message: string;
-    code: number;
-    status: string;
-  };
+  meta: Meta;
   data: {
     id: number;
     name: string;
@@ -42,3 +38,11 @@ export type LoginResponse = {
     token: string;
   };
 };
+
+export type Meta = {
+  message: string;
+  code: number;
+  status: string;
+};
+
+export type RegisterResponse = LoginResponse;

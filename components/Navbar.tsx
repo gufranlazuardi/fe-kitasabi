@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -21,19 +21,20 @@ const Navbar = () => {
           width={100}
           height={100}
           className="w-[100px]"
+          priority
         />
       </Link>
 
       <div className="flex gap-2 items-center">
-
         <Link href="/auth/login">
-          <Button className="bg-sky-400 hover:bg-[#1b609c]">Login</Button>
-        </Link>
-
-        <DropdownMenu>
-          <Button>
-            <DropdownMenuTrigger>Profile</DropdownMenuTrigger>
+          <Button className="bg-sky-400 hover:bg-[#1b609c]">
+            Login
           </Button>
+        </Link>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button>Profile</Button>
+          </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>Wishlist</DropdownMenuItem>
             <DropdownMenuItem>Transactions</DropdownMenuItem>

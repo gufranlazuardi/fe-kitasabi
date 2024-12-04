@@ -69,7 +69,11 @@ const LoginForm = () => {
             disabled={form.formState.isSubmitting}
           />
         </div>
-        <Button type="submit" disabled={form.formState.isSubmitting}>
+        <Button
+          type="submit"
+          disabled={form.formState.isSubmitting}
+          className="hover:bg-[#1b609c] bg-sky-400"
+        >
           {form.formState.isSubmitting ? (
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           ) : (
