@@ -1,5 +1,5 @@
 import { Response } from "@/utils/types/types";
-import { LoginSchema } from "./types";
+import { LoginSchema, RegisterSchema } from "./types";
 import axios from "axios";
 import axiosWithConfig from "@/utils/axiosWithConfig";
 import { User } from "../users/types";
@@ -21,6 +21,16 @@ export const getProfile = async () => {
     const response = await axiosWithConfig.get(`/sessions`);
 
     return response.data as Response<User>;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
+};
+
+export const registerAccount = async (body: RegisterSchema) => {
+  try {
+    const response = await axiosWithConfig.post(`/register`, body);
+
+    return response.data as Response;
   } catch (error: any) {
     throw Error(error.response.data.message);
   }

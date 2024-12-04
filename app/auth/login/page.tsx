@@ -13,11 +13,9 @@ const Login = () => {
           <CardDescription>Please input your email and password</CardDescription>
         </CardHeader>
         <CardContent>
-          {/* Replace the static form with LoginForm */}
           <LoginForm />
         </CardContent>
         <CardFooter className="flex justify-between">
-          {/* Optional: You could move the "Login" button here if needed */}
           <Link href="/auth/register">
             <p className='text-sm hover:underline'>You don't have an account?</p>
           </Link>
