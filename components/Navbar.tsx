@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="flex gap-2 items-center">
 
         <Link href="/auth/login">
-          <Button className="bg-sky-400">Login</Button>
+          <Button className="bg-sky-400 hover:bg-[#1b609c]">Login</Button>
         </Link>
 
         <DropdownMenu>
