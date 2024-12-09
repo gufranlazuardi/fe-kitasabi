@@ -1,20 +1,43 @@
-import { NextRequest, NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
+export function middleware(request: NextRequest) {
+  const currentUser = request.cookies.get("currentUser")?.value;
+  const token = request.cookies.get("token")?.value;
 
-const protectedRoutes = ["/transaction", "/profile"]
+  const publicRoutes = ["/login", "/signup", "/about"];
 
-export function middleware(req: NextRequest) {
-    const token = req.cookies.get("auth-token")?.value
+  // protected routes
+  if (
+    ["/transactions", "/profile"].includes(
+      request.nextUrl.pathname
+    ) &&
+    !token &&
+    !currentUser
+  ) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 
-    if (protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
-        if (!token) {
-            return NextResponse.redirect(new URL("/login", req.url))
-        }
-    }
+  // Redirect authenticated users away from the login page
+  if (currentUser && request.nextUrl.pathname === "/login") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 
-    return NextResponse.next();
+  // Redirect unauthenticated users to the login page for protected routes
+  if (
+    !currentUser &&
+    !publicRoutes.includes(request.nextUrl.pathname)
+  ) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // Allow the request to proceed
+  return NextResponse.next();
 }
 
+// Match all routes except API, Next.js assets, and static files
 export const config = {
-    matcher: ["/dashboard/"]
-}
+  matcher: [
+    "/((?!api|_next|.*\\.(?:ico|png|jpg|jpeg|svg|webp|gif|css|js|map|woff|woff2|ttf|otf|eot|txt)).*)",
+  ],
+};
