@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export type CreateTransactionResponse = {
   meta: Meta;
   data: TransactionDatas;
@@ -23,3 +25,10 @@ export type CreateTransactionRequest = {
   campaign_id: number | string;
   amount: number;
 };
+
+export const createTransatcionShema = z.object({
+  campaign_id: z.union([z.number(), z.string()]),
+  amount: z
+    .number()
+    .min(4, { message: "Amount must be at least Rp 1.000" }),
+});

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useActionState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
@@ -37,7 +37,11 @@ const LoginForm = () => {
         email: result.data.email,
         occupation: result.data.occupation,
       });
-      toast({ description: "Login successful!" });
+      toast({
+        title: "Login successful!",
+        description: "You have successfully login",
+        variant: "default",
+      });
       router.push("/");
     } catch (error: any) {
       toast({

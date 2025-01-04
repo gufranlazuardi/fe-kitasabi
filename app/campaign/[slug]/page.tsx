@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { getCampaignDetailApi } from "@/utils/apis/campaigns";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 interface CampaignDetailPageParams {
@@ -112,9 +113,11 @@ const CampaignDetailPage: React.FC<CampaignDetailPageProps> = ({
 
           {/* Progress Bar */}
           <Progress value={progressPercentage} />
-          <Button className="mt-[2rem] w-full bg-sky-500 hover:bg-sky-700">
-            Donate
-          </Button>
+          <Link href={`/transactions/${detailCampaign.id}`}>
+            <Button className="mt-[2rem] w-full bg-sky-500 hover:bg-sky-700">
+              Donate
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

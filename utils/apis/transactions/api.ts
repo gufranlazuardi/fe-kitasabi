@@ -15,6 +15,9 @@ export async function createTransactionApi(
       );
     return response.data;
   } catch (error: any) {
+    if (error.response && error.response.status === 401) {
+      throw new Error("Unauthorized: Please log in again.");
+    }
     throw new Error(
       error?.response?.data?.meta?.message ||
         "Failed to create transaction"

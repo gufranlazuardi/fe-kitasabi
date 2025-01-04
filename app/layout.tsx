@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/toaster";
 
 // Import Poppins font from Google Fonts
 const poppins = Poppins({
@@ -42,6 +43,7 @@ export default function RootLayout({
         <Navbar />
         {children}
       </body>
+      <Toaster />
     </html>
   );
 }

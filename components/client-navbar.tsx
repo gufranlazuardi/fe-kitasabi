@@ -79,7 +79,7 @@ export function ClientNavbar() {
         {token ? (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button>Profile</Button>
+              <Button className="bg-sky-500">Profile</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>Wishlist</DropdownMenuItem>
